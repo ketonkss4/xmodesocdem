@@ -15,7 +15,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug{
+            buildConfigField "int", "TIME_INTERVAL", "60000"
+        }
         release {
+            buildConfigField "int", "TIME_INTERVAL", "3600000"
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
