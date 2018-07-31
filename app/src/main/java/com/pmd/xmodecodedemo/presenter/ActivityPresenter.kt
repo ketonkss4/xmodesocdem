@@ -1,10 +1,13 @@
 package com.pmd.xmodecodedemo.presenter
 
+import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.support.v4.content.ContextCompat
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
@@ -50,7 +53,10 @@ class ActivityPresenter : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == "android.intent.action.BOOT_COMPLETED" ||
                 intent.action == "android.intent.action.LOCKED_BOOT_COMPLETED") {
-            requestRecurringLocationTrackingTask(context)
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestRecurringLocationTrackingTask(context)
+            }
         }
     }
 
