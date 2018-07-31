@@ -2,6 +2,7 @@ package com.pmd.xmodecodedemo
 
 import android.view.MotionEvent
 import android.view.View
+import com.pmd.xmodecodedemo.presenter.ActivityPresenter
 import junit.framework.Assert
 import org.junit.Test
 import org.mockito.Mockito
